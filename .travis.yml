@@ -10,7 +10,9 @@ dist: trusty64
 group: stable
 jdk: oraclejdk10
 
-script: ./mvnw test -Dmaven.surefire.excludeGroups= -B
 
 before_install:
   - chmod +x mvnw
+
+  before_script:
+    adduser contactfilter
