@@ -49,7 +49,6 @@ public class DefaultDataSourceConfig {
                 "my-db",
                 Collections.emptyList());
 
-
         return embeddedDataSourceProperties.initializeDataSourceBuilder().build();
     }
 }
