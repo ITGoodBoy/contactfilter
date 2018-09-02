@@ -16,6 +16,13 @@ import java.net.URI;
 import java.nio.file.Paths;
 import java.util.Collections;
 
+import java.io.Reader;
+import java.nio.file.Paths;
+import java.sql.Connection;
+import java.util.Collections;
+
+
+
 import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V9_6;
 
 @Profile("default")
@@ -33,7 +40,15 @@ public class DefaultDataSourceConfig {
     @ConfigurationProperties("spring.datasource")
     @Primary
     public DataSource dataSource() throws IOException {
-        new EmbeddedPostgres().start(EmbeddedPostgres.cachedRuntimeConfig(Paths.get(System.getProperty("java.io.tmpdir"), "pgembed")), "localhost", SocketUtil.findFreePort(), "postgres_genkeys", "postgres", "root", Collections.emptyList());
+        new EmbeddedPostgres().start(EmbeddedPostgres.cachedRuntimeConfig(
+                Paths.get(System.getProperty("java.io.tmpdir"), "pgembed")),
+                "localhost",
+                5432,
+                "my-db",
+                "my-db",
+                "my-db",
+                Collections.emptyList());
+
 
         return embeddedDataSourceProperties.initializeDataSourceBuilder().build();
     }
