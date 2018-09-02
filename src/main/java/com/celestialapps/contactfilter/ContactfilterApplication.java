@@ -5,6 +5,7 @@ import com.celestialapps.contactfilter.model.MongoContact;
 import com.celestialapps.contactfilter.repository.ContactRepository;
 import com.celestialapps.contactfilter.repository.MongoContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,7 +27,9 @@ import java.util.stream.Collectors;
 @SpringBootApplication
 public class ContactfilterApplication  implements CommandLineRunner{
 
-
+  // first-names.txt contains 4945 records, entity size = 4945 * multiplier
+    @Value("${contactfilter.multiplier}")
+    private int multiplier;
     private final ContactRepository contactRepository;
     private final MongoContactRepository mongoContactRepository;
 
@@ -43,11 +46,11 @@ public class ContactfilterApplication  implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
         if (contactRepository.count() == 0) {
-            initializeContactRepositoryData(10);
+            initializeContactRepositoryData(multiplier);
         }
 
         if (mongoContactRepository.count().block() == 0) {
-            initializeMongoContactRepositoryData(10);
+            initializeMongoContactRepositoryData(multiplier);
         }
 
     }
