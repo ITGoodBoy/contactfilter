@@ -15,6 +15,8 @@ import java.net.URI;
 import java.nio.file.Paths;
 import java.util.Collections;
 
+import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V9_6;
+
 @Profile("default")
 @Configuration
 public class DefaultDataSourceConfig {
@@ -26,14 +28,13 @@ public class DefaultDataSourceConfig {
         this.embeddedDataSourceProperties = embeddedDataSourceProperties;
     }
 
-
     @Bean
     @ConfigurationProperties("spring.datasource")
     @Primary
     public DataSource dataSource() throws IOException {
         URI uri = URI.create(embeddedDataSourceProperties.getUrl().substring(5));
-        new EmbeddedPostgres().start(EmbeddedPostgres.cachedRuntimeConfig(
-                Paths.get(System.getProperty("java.io.tmpdir"), "pgembed")),
+        new EmbeddedPostgres(V9_6).start(EmbeddedPostgres.cachedRuntimeConfig(
+                Paths.get(embeddedDataSourceProperties.getEmbeddedDirectory())),
                 uri.getHost(), uri.getPort(), uri.getPath().substring(1),
                 embeddedDataSourceProperties.getUsername(),
                 embeddedDataSourceProperties.getPassword(),

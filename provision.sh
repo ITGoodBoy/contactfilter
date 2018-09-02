@@ -14,6 +14,7 @@ sudo add-apt-repository ppa:linuxuprising/java
 sudo apt-get update
 sudo apt-get install -y oracle-java10-installer
 sudo apt-get install -y oracle-java10-set-default
+sudo postgresql-setup initdb
 cd /vagrant
 mvn package
 cd target
