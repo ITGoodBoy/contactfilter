@@ -10,7 +10,8 @@ dist: trusty64
 group: stable
 jdk: oraclejdk10
 
-before script: mvn clean verify
+before script:
+  - sudo adduser contactfilter
 
 before_install:
   - chmod +x mvnw
