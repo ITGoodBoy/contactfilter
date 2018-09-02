@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {ContactfilterApplication.class})
 @WebAppConfiguration
-public class ContactControllerIntegrationTest {
+public class ContactControllerTest {
 
     @Autowired
     WebApplicationContext webApplicationContext;
@@ -40,11 +40,19 @@ public class ContactControllerIntegrationTest {
 
 
     @Test
-    public void getPersonsForApiConsumerTest() throws Exception {
+    public void getContactsTest() throws Exception {
         mockMvc.perform(get("/hello/contacts/")
                 .param("nameFilter", "^A.*$"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andReturn();
     }
+
+    @Test
+    public void getMongoContactsTest() throws Exception {
+        mockMvc.perform(get("/hello/mongo/contacts/")
+                .param("nameFilter", "^A.*$"))
+                .andExpect(status().isOk())
+                .andReturn();
+    }
+
 }

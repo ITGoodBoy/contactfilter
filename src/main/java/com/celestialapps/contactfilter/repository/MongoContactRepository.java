@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface MongoContactRepository extends ReactiveMongoRepository<MongoContact, String> {
 
 
+
 }
