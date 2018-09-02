@@ -1,12 +1,15 @@
+sudo: required
 language: java
-dist: trusty64,
-group: stable,
-jdk: oraclejdk10
 
 cache:
   directories:
     - $HOME/.m2
     - $HOME/.embedpostgresql
+
+dist: trusty64,
+group: stable,
+jdk: oraclejdk10
+
 
 before_install:
   - chmod +x mvnw
