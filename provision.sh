@@ -14,8 +14,7 @@ sudo add-apt-repository ppa:linuxuprising/java
 sudo apt-get update
 sudo apt-get install -y oracle-java10-installer
 sudo apt-get install -y oracle-java10-set-default
-sudo postgresql-setup initdb
+sudo useradd -p 11111111 faster
+sudo su faster
 cd /vagrant
-mvn package
-cd target
-java -jar contactfilter-0.0.1-SNAPSHOT.jar
+mvn -s setting.xml clean install
