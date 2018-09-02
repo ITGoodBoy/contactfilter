@@ -32,7 +32,7 @@ public class DefaultDataSourceConfig {
     public DataSource dataSource() throws IOException {
         URI uri = URI.create(embeddedDataSourceProperties.getUrl().substring(5));
         new EmbeddedPostgres().start(EmbeddedPostgres.cachedRuntimeConfig(
-                        Paths.get(embeddedDataSourceProperties.getEmbeddedDirectory())),
+                        Paths.get("target/postgres")),
                         uri.getHost(), uri.getPort(), uri.getPath().substring(1),
                         embeddedDataSourceProperties.getUsername(),
                         embeddedDataSourceProperties.getPassword(),
