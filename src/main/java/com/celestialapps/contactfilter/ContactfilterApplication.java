@@ -40,9 +40,7 @@ public class ContactfilterApplication  implements CommandLineRunner{
     }
 
     public static void main(String[] args) {
-
 		SpringApplication.run(ContactfilterApplication.class, args);
-
 	}
 
     @Override
