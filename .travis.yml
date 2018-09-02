@@ -2,6 +2,12 @@ language: java
 dist: trusty64,
 group: stable,
 jdk: oraclejdk10
+
+cache:
+  directories:
+    - $HOME/.m2
+    - $HOME/.embedpostgresql
+
 before_install:
   - chmod +x mvnw
 
