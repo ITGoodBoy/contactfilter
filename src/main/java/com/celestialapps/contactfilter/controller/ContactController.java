@@ -3,7 +3,6 @@ package com.celestialapps.contactfilter.controller;
 import com.celestialapps.contactfilter.model.Contact;
 import com.celestialapps.contactfilter.request.ContactRequest;
 import com.celestialapps.contactfilter.service.ContactService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

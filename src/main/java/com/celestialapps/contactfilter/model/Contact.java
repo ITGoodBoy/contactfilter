@@ -2,7 +2,6 @@ package com.celestialapps.contactfilter.model;
 
 import com.celestialapps.contactfilter.request.ContactRequest;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
