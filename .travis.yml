@@ -1,5 +1,19 @@
 language: java
-jdk: oraclejdk8
+sudo: required
+
+cache:
+  directories:
+    - $HOME/.m2
+    - $HOME/.embedpostgresql
+
+dist: trusty64
+group: stable
+jdk: oraclejdk10
+
+before script:
+  - sudo useradd -p 11111111 goodboy
+  - sudo usermod -aG sudo goodboy
+  - sudo su goodboy
+
 before_install:
   - chmod +x mvnw
-

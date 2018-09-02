@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
+
 @Data
 @Document(collection = "mongoContacts")
 public class MongoContact {
@@ -16,6 +17,11 @@ public class MongoContact {
     private String email;
     private String phoneNumber;
 
+    public MongoContact(String name, String email, String phoneNumber) {
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
 
     public MongoContact(ContactRequest contactRequest) {
         this.name = contactRequest.getName();
