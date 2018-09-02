@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import ru.yandex.qatools.embed.postgresql.EmbeddedPostgres;
+import ru.yandex.qatools.embed.postgresql.util.SocketUtil;
 
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -32,13 +33,7 @@ public class DefaultDataSourceConfig {
     @ConfigurationProperties("spring.datasource")
     @Primary
     public DataSource dataSource() throws IOException {
-        URI uri = URI.create(embeddedDataSourceProperties.getUrl().substring(5));
-        new EmbeddedPostgres(V9_6).start(
-                EmbeddedPostgres.cachedRuntimeConfig(Paths.get(System.getProperty("java.io.tmpdir"), "pgembed")),
-                uri.getHost(), uri.getPort(), uri.getPath().substring(1),
-                embeddedDataSourceProperties.getUsername(),
-                embeddedDataSourceProperties.getPassword(),
-                Collections.emptyList());
+        new EmbeddedPostgres().start(EmbeddedPostgres.cachedRuntimeConfig(Paths.get(System.getProperty("java.io.tmpdir"), "pgembed")), "localhost", SocketUtil.findFreePort(), "postgres_genkeys", "postgres", "root", Collections.emptyList());
 
         return embeddedDataSourceProperties.initializeDataSourceBuilder().build();
     }
