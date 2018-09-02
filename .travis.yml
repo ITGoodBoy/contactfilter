@@ -1,7 +1,7 @@
 language: java
 dist: trusty64,
 group: stable,
-jdk: oraclejdk8
+jdk: oraclejdk10
 before_install:
   - chmod +x mvnw
 
