@@ -33,8 +33,8 @@ public class DefaultDataSourceConfig {
     @Primary
     public DataSource dataSource() throws IOException {
         URI uri = URI.create(embeddedDataSourceProperties.getUrl().substring(5));
-        new EmbeddedPostgres(V9_6).start(EmbeddedPostgres.cachedRuntimeConfig(
-                Paths.get(embeddedDataSourceProperties.getEmbeddedDirectory())),
+        new EmbeddedPostgres(V9_6).start(
+                EmbeddedPostgres.cachedRuntimeConfig(Paths.get(System.getProperty("java.io.tmpdir"), "pgembed")),
                 uri.getHost(), uri.getPort(), uri.getPath().substring(1),
                 embeddedDataSourceProperties.getUsername(),
                 embeddedDataSourceProperties.getPassword(),
