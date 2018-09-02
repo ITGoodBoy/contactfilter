@@ -31,7 +31,7 @@ public class DefaultDataSourceConfig {
     @Primary
     public DataSource dataSource() throws IOException {
         URI uri = URI.create(embeddedDataSourceProperties.getUrl().substring(5));
-        new EmbeddedPostgres(() -> "9.6.5").start(EmbeddedPostgres.cachedRuntimeConfig(
+        new EmbeddedPostgres().start(EmbeddedPostgres.cachedRuntimeConfig(
                         Paths.get(embeddedDataSourceProperties.getEmbeddedDirectory())),
                         uri.getHost(), uri.getPort(), uri.getPath().substring(1),
                         embeddedDataSourceProperties.getUsername(),
