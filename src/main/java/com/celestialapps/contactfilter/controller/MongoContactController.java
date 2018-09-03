@@ -25,7 +25,7 @@ public class MongoContactController {
 
 
     @GetMapping("/")
-    public ResponseEntity<ParallelFlux<MongoContact>> findContactsByJavaFilterFromMongo(@RequestParam("nameFilter") String nameFilter) {
+    public ResponseEntity<Flux<MongoContact>> findContactsByJavaFilterFromMongo(@RequestParam("nameFilter") String nameFilter) {
         return ResponseEntity.ok(mongoContactService.getContactsWithJavaRegularFilter(nameFilter));
     }
 

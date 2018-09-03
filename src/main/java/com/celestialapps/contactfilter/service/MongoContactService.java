@@ -10,7 +10,7 @@ import java.util.List;
 public interface MongoContactService {
 
 
-    ParallelFlux<MongoContact> getContactsWithJavaRegularFilter(String javaRegularFilter);
+    Flux<MongoContact> getContactsWithJavaRegularFilter(String javaRegularFilter);
 
     Flux<MongoContact> addContacts(List<ContactRequest> contactRequests);
 }

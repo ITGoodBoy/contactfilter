@@ -23,8 +23,8 @@ public class MongoContactServiceImpl implements MongoContactService {
     }
 
     @Override
-    public ParallelFlux<MongoContact> getContactsWithJavaRegularFilter(String javaRegularFilter) {
-        return mongoContactRepository.findAll().parallel().filter(mongoContact -> !mongoContact.getName().matches(javaRegularFilter));
+    public Flux<MongoContact> getContactsWithJavaRegularFilter(String javaRegularFilter) {
+        return mongoContactRepository.findAll().filter(mongoContact -> !mongoContact.getName().matches(javaRegularFilter));
     }
 
 

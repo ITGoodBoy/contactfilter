@@ -1,5 +1,6 @@
 package com.celestialapps.contactfilter;
 
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,6 +38,7 @@ public class ContactControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
     }
+
 
     @Test
     public void getMongoContactsTest() throws Exception {

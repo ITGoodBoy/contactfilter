@@ -28,4 +28,10 @@ public class MongoContact {
         this.email = contactRequest.getEmail();
         this.phoneNumber = contactRequest.getPhoneNumber();
     }
+
+    public MongoContact(Contact contact) {
+        this.name = contact.getName();
+        this.email = contact.getEmail();
+        this.phoneNumber = contact.getPhoneNumber();
+    }
 }
