@@ -7,7 +7,6 @@ import com.celestialapps.contactfilter.service.MongoContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.ParallelFlux;
 
 import java.util.List;
 import java.util.stream.Collectors;
