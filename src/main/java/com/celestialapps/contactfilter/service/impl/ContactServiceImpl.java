@@ -71,6 +71,7 @@ public class ContactServiceImpl implements ContactService {
                 .stream()
                 .map(strings -> contactRepository.findAllByNameIn(strings))
                 .flatMap((Function<List<Contact>, Stream<Contact>>) Collection::stream)
+                .sorted(Comparator.comparing(Contact::getName))
                 .collect(Collectors.toList());
     }
 

@@ -2,6 +2,7 @@ package com.celestialapps.contactfilter.repository;
 
 import com.celestialapps.contactfilter.model.Contact;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

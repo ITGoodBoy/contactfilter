@@ -23,6 +23,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -84,6 +85,7 @@ public class ContactControllerTest {
         String notRegex = RegexUtils.convertToNotRegex(regex);
 
         List<Contact> contacts = contactRepository.findByNameRegex(notRegex);
+        contacts.sort(Comparator.comparing(Contact::getName));
 
         String result = mockMvc.perform(get("/hello/contacts/")
                 .param("nameFilter", regex))
